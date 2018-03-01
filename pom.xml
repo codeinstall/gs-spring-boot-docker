@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>uk.co.harpercollins.sea</groupId>
+		<artifactId>super-pom</artifactId>
+		<version>1.0.1</version>
+	</parent>
+	<groupId>uk.co.harpercollins.sea</groupId>
+	<artifactId>JavaAppTest</artifactId>
+	<version>1.2.3</version>	
+	<properties>	
+	<host>51.143.190.47</host>
+	</properties>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<configuration>
+						<target>
+								<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="maven.plugin.classpath" />
+								<echo message="" />
+								<echo message="iNFO: start Configuration..." />
+								<echo message="" /> <!--
+								<sshexec host="${host}" username="${username}" password="${password}" command="${sendMail}" trust="true" />				
+								-->
+							<!-- TIDY UP -->
+							<delete file="${project.build.directory}/antrun/build-main.xml" />					
+						</target>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-jsch</artifactId>
+							<version>1.9.4</version>
+						</dependency>
+						<dependency>
+							<groupId>ant-contrib</groupId>
+							<artifactId>ant-contrib</artifactId>
+							<version>1.0b3</version>
+							<exclusions>
+								<exclusion>
+									<groupId>ant</groupId>
+									<artifactId>ant</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>com.jcraft</groupId>
+							<artifactId>jsch</artifactId>
+							<version>0.1.50</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				
+				<!--
+				<plugin> 
+                    <groupId>org.apache.maven.plugins</groupId> 
+                    <artifactId>maven-dependency-plugin</artifactId> 
+                    <version>2.8</version> 
+                    <configuration> 
+                        <groupId>${project.groupId}</groupId> 
+                        <artifactId>${project.artifactId}</artifactId> 
+                        <version>${project.version}</version> 
+                        <outputDirectory>${project.build.directory}</outputDirectory> 
+                        <stripVersion>true</stripVersion> 
+                        <artifactItems> 
+                            <artifactItem> 
+                                <groupId>${project.groupId}</groupId> 
+                                <artifactId>${project.artifactId}</artifactId> 
+                                <version>${project.version}</version> 
+                                <type>tar</type> 
+                                <outputDirectory>${project.build.directory}/${project.artifactId}</outputDirectory> 
+                            </artifactItem> 
+                        </artifactItems> 
+                    </configuration> 
+                </plugin> -->
+			</plugins>
+	</pluginManagement>
+	</build>	
+	<scm>
+		<developerConnection>scm:git:git@bitbucket.org:hcpuksea/apptest.git</developerConnection>
+    <tag>1.2.3</tag>
+  </scm>
+</project>
